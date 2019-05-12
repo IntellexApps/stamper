@@ -17,9 +17,9 @@ server {
 	...
 
 	# This should be the first location section in your config 
-	location /images/ {
+	location ~* /images/.*\.(jpe?g|png)(?|$) {
 		fastcgi_pass	unix:/run/php/php7.1-fpm.sock;
-		try_files	/proxy/watermark.php =404;
+		try_files	/Proxy/watermark.php =409;
 		include		fastcgi.conf;
 	}
 	
@@ -145,8 +145,11 @@ new StampImage();
 
 To do
 --------------------
-1. Make it easier to stamp in the standard positions (ie: center, top, bottom-right, etc...).
-2. More tests.
+1. Speed up the opacity set.
+2. Make it easier to stamp in the standard positions (ie: center, top, bottom-right, etc...).
+3. Be able to define the number of tiles, so that the watermark is automatically scalled.
+4. More tests.
+
 
 Licence
 --------------------

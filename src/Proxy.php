@@ -28,6 +28,7 @@ abstract class Proxy {
 		} else {
 			$this->requestPath = $_SERVER['REQUEST_URI'];
 		}
+		$this->requestPath = urldecode($this->requestPath);
 
 		// Try cache
 		$this->tryCache();

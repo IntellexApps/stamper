@@ -144,7 +144,7 @@ class Image {
 	 * @param int $width  The new width of the image.
 	 * @param int $height The new height of the image.
 	 *
-	 * @return resource The image data in the new size
+	 * @return Image The image data in the new size
 	 */
 	public function resize($width, $height) {
 		$newData = $this->data;
@@ -163,7 +163,8 @@ class Image {
 			);
 		}
 
-		return $this->data = $newData;
+		$this->data = $newData;
+		return $this;
 	}
 
 	/**
@@ -171,14 +172,14 @@ class Image {
 	 *
 	 * @param int $degrees The amount in which to rotate the image anti-clockwise, in degrees.
 	 *
-	 * @return resource The rotated image resource.
+	 * @return Image The rotated image resource.
 	 */
 	public function rotate($degrees) {
 		if ($degrees !== null && $degrees !== 0) {
 			$this->data = imageRotate($this->data, $degrees, imageColorAllocateAlpha($this->data, 0, 0, 0, 127));
 		}
 
-		return $this->data;
+		return $this;
 	}
 
 	/**
@@ -186,7 +187,7 @@ class Image {
 	 *
 	 * @param float $opacity The opacity of the stamp, as a value between 0.0 and 1.0.
 	 *
-	 * @return resource The modified image resource.
+	 * @return Image The modified image resource.
 	 */
 	public function setOpacity($opacity) {
 		if ($opacity !== null && $opacity < 1) {
@@ -207,7 +208,7 @@ class Image {
 			}
 		}
 
-		return $this->data;
+		return $this;
 	}
 
 	/**
@@ -294,6 +295,16 @@ class Image {
 	/** @return string The valid mime type for the loaded image. */
 	public function getMimeType() {
 		return 'image/' . $this->getType();
+	}
+
+	/** @return int The width of the image, in pixels. */
+	public function getWidth() {
+		return imageSX($this->data);
+	}
+
+	/** @return int The height of the image, in pixels. */
+	public function getHeight() {
+		return imageSY($this->data);
 	}
 
 }

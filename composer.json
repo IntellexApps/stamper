@@ -1,0 +1,24 @@
+{
+	"name"       : "intellex/stamper",
+	"description": "Stamps the images with opaque or semi-transparent overlays",
+	"type"       : "library",
+	"license"    : "MIT",
+	"authors"    : [
+		{
+			"name" : "Sabo",
+			"email": "sabo@intellex.rs"
+		}
+	],
+	"autoload"   : {
+		"psr-4": {
+			"Intellex\\ImageStamp\\": "src\\"
+		}
+	},
+	"require"    : {
+		"ext-gd"             : "*",
+		"intellex/filesystem": "^1.0"
+	},
+	"require-dev": {
+		"intellex/debugger": "^1.0"
+	}
+}

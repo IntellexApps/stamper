@@ -49,7 +49,7 @@ $stamp->getSource()->setOpacity(0.5);  // Make it 50% translucent
 $transformation = new Transformation(
 	200, 100,   // Width and height
 	180,        // Rotation
-	0.5	        // Opacity
+	0.5         // Opacity
 );
 $stamp->getSource()->apply($transformation);
 
@@ -66,7 +66,7 @@ $image = Image::fromFile('/path/to/your/target-image.jpeg');
 
 // Execute
 $image->stamp($stamp, 100, 100); // Single stamp starting on position 100 x 100
-$image->watermark($stamp);       // Tiled watermark accros the whole image
+$image->watermark($stamp);       // Tiled watermark across the whole image
 
 ```
 
@@ -96,7 +96,7 @@ class StampImage extends \Intellex\ImageStamp\Proxy {
 	/** @inheritdoc */
 	protected function handle() {
 		// TODO the magic here
-		return 'THE DATA'; // This value will be automatically cached in the file define in defineCache() method
+		return 'THE DATA'; // Automatically cached in the file defined in defineCache()
 	}
 
 }
@@ -145,7 +145,7 @@ new StampImage();
 
 To do
 --------------------
-1. Speed up the opacity set.
+1. Speed up the method for changing the opacity.
 2. Make it easier to stamp in the standard positions (ie: center, top, bottom-right, etc...).
 3. Be able to define the number of tiles, so that the watermark is automatically scalled.
 4. More tests.
